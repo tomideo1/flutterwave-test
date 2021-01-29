@@ -8,6 +8,7 @@ import myRoutes from "./routes/web.routes";
 const app = express();
 
 // body parser middleware
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,12 +19,14 @@ process.env.NODE_CONFIG_DIR = './environment'
 app.use(response.handleResponse);
 myRoutes(app);
 
-app.use(function (req:any,res:any,next:any){
-  res.status(404).json({
-    message: 'Unable to find the requested route!',
+app.use(function (err:any, req:any, res:any, next:any) {
+  res.status(400).json({
+    message: "Invalid JSON payload passed.",
     status: "error",
     data: null
-  },404);
+  }
+  );
+
 });
 
 

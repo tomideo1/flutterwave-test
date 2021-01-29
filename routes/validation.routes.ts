@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
 import RuleController from '../controllers/rule.controller';
-// import WishlistPolicies from "../policies/wishlist.policies";
-// router
-// .route('/create')
-// .post([new WishlistPolicies().validateCreateWishlist],new WishlistController().createWishlist);
+import RulePolicies from "../policies/rule.policies";
+
+
 
 
 router
 .route('')
-.get(new RuleController().fetch);
+    .get(new RuleController().fetch);
+
+router
+.route('/validate-rule')
+.post([new RulePolicies().vaidateRuleData],new RuleController().validate);
 
 
-// router
-// .route('/:wishlist/create-wishlist-service')
-// .post([new WishlistPolicies().validateAddServiceToWishlist],new WishlistController().addWishlistService);
 
 
 

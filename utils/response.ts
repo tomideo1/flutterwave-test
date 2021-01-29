@@ -11,6 +11,11 @@ export default {
                 return res.status(400).json(data);
             }
 
+            res['isRuleResponse']  =  async function(data : any,code:number)
+            {
+                return res.status(code).json(data);
+            }
+
             res['isNotFound']  =  async function(data : any)
             {
                 return res.status(404).json(data);
@@ -22,7 +27,7 @@ export default {
                 return res.status(403).json(data);
             }
 
-            res['isServerError']  =  async function(data : any,error : any)
+            res['isServerError']  =  async function (data: any)
             {
                 //log an error to error server
 
@@ -32,26 +37,15 @@ export default {
 
             res['isInvalidData']  =  async function(data : any)
             {
-                //log an error to error server
-                // reprocess error
-                // console.log(data.data);
-
                 let errorData = data.data && data.data.length > 0 ? data.data : [];
                 
                 let errorBag : any = {};
 
-                for (const err of errorData) {
-                    // console.log(err)
-                    
+                for (const err of errorData) {                    
                     errorBag[`${err.context.key}`] = err.message
                     
                 }
-                // console.log(errorBag)
-                data['error'] = errorBag;
-                data['code'] = 422;
-                errorBag = null;
-                delete data['data'];
-                
+                data['data'] = errorBag;
                 return res.status(422).json(data);
 
             }

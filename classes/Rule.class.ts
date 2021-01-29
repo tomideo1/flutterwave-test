@@ -11,7 +11,7 @@ class RuleClass {
             "github": "@tomideo1",
              "email":  "ayotomideaina@gmail.com",
              "mobile": "08179009377",
-            "twitter": "@codehackblack"
+              "twitter": "@codehackblack"
          }
         }) 
     }

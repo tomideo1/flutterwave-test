@@ -34,7 +34,7 @@ class RuleClass {
             else{
                 return res.isRuleResponse(
                     {
-                        "message": `field ${field}.count ${validationRule.validated ? 'successfully validated' : 'failed validation'}.`,
+                        "message": `field ${field}  ${validationRule.validated ? 'successfully validated' : 'failed validation'}.`,
                         "status": ` ${validationRule.validated ? 'success' : 'error'}`,
                         "data": {
                             "validation": {
